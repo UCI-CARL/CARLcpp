@@ -1,0 +1,20 @@
+
+find_path(CARLCPP_INCLUDE_DIR carlcpp.hpp HINTS "@CMAKE_INSTALL_PREFIX@/include/carl" )
+
+include(FindPackageHandleStandardArgs)
+find_package_handle_standard_args(carlcpp DEFAULT_MSG
+    CARLCPP_INCLUDE_DIR
+)
+
+add_library(carlcpp INTERFACE IMPORTED)
+
+set_target_properties(carlcpp PROPERTIES
+    INTERFACE_INCLUDE_DIRECTORIES ${CARLCPP_INCLUDE_DIR}
+)
+
+mark_as_advanced(
+    CARLCPP_INCLUDE_DIR
+)
+
+
+
